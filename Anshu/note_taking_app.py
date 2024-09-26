@@ -1,7 +1,8 @@
 print("\n\tWelcome To Your Note Taking App")
+list=[]
+
 def to_do():
     
-    list=[]
 
     while True:
         print('\nADD NOTE')
@@ -17,14 +18,15 @@ def to_do():
             print('Enter a valid answer') 
     
     leng=len(list)   
-    i=0
-    print('\nYOUR TASKS ARE : ')
-    while i<leng:
-        print(f"{i+1}. {list[i]}")
-        i+=1
-    print('\n')
-
-    choice=int(input('''OPERATIONS :
+    # i=0
+    # print('\nYOUR TASKS ARE : ')
+    # while i<leng:
+    #     print(f"{i+1}. {list[i]}")
+    #     i+=1
+    # print('\n')
+    
+    while True:
+        choice=int(input('''OPERATIONS :
         1. ADD TASK
         2. DELETE TASK
         3. VIEW
@@ -32,34 +34,39 @@ def to_do():
         
         YOUR CHOICE : '''))
 
-    if choice==1:
-        print("---ADD TASK---")
-        new_task=input()
-        list.append(new_task)
-        print('NEW TASK HAS BEEN ADDED')
+        if choice==1:
+            print("---ADD TASK---")
+            new_task=input()
+            list.append(new_task)
+            print('NEW TASK HAS BEEN ADDED')
     
-    elif choice==2:
-        remove=int(input('WHICH NUMBER TASK DO YOU WANT TO REMOVE??'))
-        if remove>leng:
-            print("VALID A NUMBER OF TASK TO REMOVE")
-        else:
-            list.pop(list(remove))
-            print('the task has been succesfully removed ')
+        elif choice==2:
+            remove=int(input('WHICH NUMBER TASK DO YOU WANT TO REMOVE??'))
+            if remove>leng:
+                print("VALID A NUMBER OF TASK TO REMOVE")
+            else:
+                list.pop(remove-1)
+                print('the task has been succesfully removed ')
+                
+    
+        elif choice==3:
+            length=len(list)   
             i=0
             print('\nYOUR TASKS ARE : ')
-            while i<leng:
+            while i<length:        
                 print(f"{i+1}. {list[i]}")
                 i+=1
+            print('\n')
     
-    elif choice==3:
-        i=0
-        print('\nYOUR TASKS ARE : ')
-        while i<leng:
-            print(f"{i+1}. {list[i]}")
-            i+=1
     
-    else:
-        to_do()
+        else:
+            with open('tasks', 'w') as out_file:
+             le=int(len(list))
+             n=0
+             while n<le:
+                out_file.write(f"{n+1}. {list[n]}")
+            break
+    
 
 
 to_do()       
