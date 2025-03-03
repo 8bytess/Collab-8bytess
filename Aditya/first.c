@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main(){
-    printf("le re lund ke");
-    printf("de re lund ke");
+    printf("Hey There");
+    printf("\nThis is my world");
     return 0;
 }
